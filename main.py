@@ -3,6 +3,8 @@ from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star
 from astrbot.api import logger
 import astrbot.api.message_components as Comp
+import tracemoe
+import zhconv
 
 class MyPlugin(Star):
     def __init__(self, context: Context):
@@ -19,5 +21,15 @@ class MyPlugin(Star):
             return
 
         image_path = await images[0].convert_to_file_path()
-        yield event.image_result(image_path)
+
+        def fand(path):
+            sc = tracemoe.search_file(path)
+            en = str(sc[0]).split()
+            jtz = zhconv.convert(en[0], "zh-hans")
+            return f"名称:{jtz}\n具体时间:{en[1]},{en[2]}\n{en[3]}:{en[4]}"
+
+        q = fand(image_path)
+        yield event.plain_result(q)
+
+
 
