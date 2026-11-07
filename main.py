@@ -1,4 +1,4 @@
-form astrbot.api.event import filter,AstrMessageEventReault
+fromm astrbot.api.event import filter,AstrMessageEventResult
 from astrbot.api.star import Context, Star
 from astrbot.api import logger
 
@@ -7,7 +7,7 @@ class MyPlugin(Star):
         super().__init__(context)
 
 
-    @filter.command("查询"):
+    @filter.command("查询")
     async def find(self, event: AstrMessageEventReault):
         """下面是调用查询动漫的api"""
         user_image = event.get_message_image()
