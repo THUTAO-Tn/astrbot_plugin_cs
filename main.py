@@ -10,6 +10,6 @@ class MyPlugin(Star):
     @filter.command("查询"):
     async def find(self, event: AstrMessageEventReault):
         """下面是调用查询动漫的api"""
-        user_image = event.get_message(image)
+        user_image = event.get_message_image()
         logger.info(user_image)
         yield event.image_result(user_image)
