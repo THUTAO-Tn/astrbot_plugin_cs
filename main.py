@@ -3,8 +3,17 @@ from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star
 from astrbot.api import logger
 import astrbot.api.message_components as Comp
-import tracemoe
 import zhconv
+
+try:
+    from . import tracemoe  # 相对导入：插件自带的 tracemoe.py
+except ImportError:  # 兼容以文件方式加载的场景
+    import os
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import tracemoe
+
+
 
 class MyPlugin(Star):
     def __init__(self, context: Context):
