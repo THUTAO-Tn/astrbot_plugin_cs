@@ -17,3 +17,7 @@ class MyPlugin(Star):
             yield event.plain_result("请发送图片")
             logger.info("测试111")
             return
+
+        image_path = await images[0].convert_to_file_path()
+        yield event.plain_result(image_path)
+
