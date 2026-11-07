@@ -19,5 +19,5 @@ class MyPlugin(Star):
             return
 
         image_path = await images[0].convert_to_file_path()
-        yield event.plain_result(image_path)
+        yield event.image_result(image_path)
 
