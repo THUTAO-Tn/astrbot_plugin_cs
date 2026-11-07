@@ -1,5 +1,3 @@
-from email.mime import image
-
 form astrbot.api.event import filter,AstrMessageEventReault
 from astrbot.api.star import Context, Star
 from astrbot.api import logger
