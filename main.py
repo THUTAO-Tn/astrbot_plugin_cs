@@ -32,7 +32,7 @@ class MyPlugin(Star):
         images = []
         if reply is not None:
             images = [
-                s for s in (reply.at or []) if isinstance(s, Comp.Image)
+                s for s in (reply.chain or []) if isinstance(s, Comp.Image)
             ]
         logger.info("未找到引用消息，继续执行自带消息")
         """其次自带"""
