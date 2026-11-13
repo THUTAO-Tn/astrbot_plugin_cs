@@ -6,7 +6,7 @@ import astrbot.api.message_components as Comp
 import zhconv
 
 try:
-    from . import tracemoe  # 相对导入：插件自带的 tracemoe.py
+    from . import tracemoe  # 相对导入
 except ImportError:  # 兼容以文件方式加载的场景
     import os
     import sys
@@ -23,10 +23,10 @@ class MyPlugin(Star):
     @filter.command("查询")
     async def find(self, event: AstrMessageEvent):
         """下面是调用查询动漫的api"""
-        images = [seg for seg in event.get_messages() if isinstance(seg, Comp.Image)]
+        images = [s for s in (reply.chain or []) if isinstance(s, Comp.Image)]
         if not images:
-            yield event.plain_result("请发送图片")
-            logger.info("测试111")
+            yield event.plain_result("请引用发送的图片")
+            logger.info("未找到用户所引用的图片")
             return
 
         image_path = await images[0].convert_to_file_path()
