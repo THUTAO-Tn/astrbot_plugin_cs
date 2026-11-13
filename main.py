@@ -23,10 +23,26 @@ class MyPlugin(Star):
     @filter.command("查询")
     async def find(self, event: AstrMessageEvent):
         """下面是调用查询动漫的api"""
-        images = [s for s in (reply.chain or []) if isinstance(s, Comp.Image)]
+        reply = next(
+            (seg for seg in event.get_messages() if isinstance(seg, Comp.Reply)),
+            None,
+        )
+        """优先引用"""
+        images = []
+        if reply is not None:
+            images = [
+                s for s in (reply.chain or []) if isinstance(s, Comp.Image)
+            ]
+        """其次自带"""
         if not images:
-            yield event.plain_result("请引用发送的图片")
-            logger.info("未找到用户所引用的图片")
+            images = [
+                s
+                for s in event.get_messages()
+                if isinstance(s, Comp.Image) and s is not reply
+            ]
+
+        if not images:
+            yield event.plain_result("请发送一张动漫截图，或回复一张图片再发 /查询")
             return
 
         image_path = await images[0].convert_to_file_path()

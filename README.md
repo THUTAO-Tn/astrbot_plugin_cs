@@ -1,14 +1,21 @@
-# astrbot-plugin-helloworld
-
-AstrBot 插件模板 / A template plugin for AstrBot plugin feature
-
-> [!NOTE]
-> This repo is just a template of [AstrBot](https://github.com/AstrBotDevs/AstrBot) Plugin.
+# 桃薰自制插件
+> 用于个人练习所用、
 > 
-> [AstrBot](https://github.com/AstrBotDevs/AstrBot) is an agentic assistant for both personal and group conversations. It can be deployed across dozens of mainstream instant messaging platforms, including QQ, Telegram, Feishu, DingTalk, Slack, LINE, Discord, Matrix, etc. In addition, it provides a reliable and extensible conversational AI infrastructure for individuals, developers, and teams. Whether you need a personal AI companion, an intelligent customer support agent, an automation assistant, or an enterprise knowledge base, AstrBot enables you to quickly build AI applications directly within your existing messaging workflows.
+> 功能都是些小功能
 
-# Supports
+## 功能
 
-- [AstrBot Repo](https://github.com/AstrBotDevs/AstrBot)
-- [AstrBot Plugin Development Docs (Chinese)](https://docs.astrbot.app/dev/star/plugin-new.html)
-- [AstrBot Plugin Development Docs (English)](https://docs.astrbot.app/en/dev/star/plugin-new.html)
+- 通过指令```/查询 <image>```来查询此图片在哪部动漫中出现，可以精确到秒
+- ### 敬请期待
+
+## 如何安装
+
+- 通过[astrbot](https://astrbot.app/)的添加插件来安装：复制[仓库地址](https://github.com/THUTAO-Tn/astrbot_plugin_cs)到添加插件的连接即可安装
+
+## 兼容
+
+| 平台 | 版本 | 状态 |
+|---|---|---|
+|[astrbot](https://astrbot.app/)|全部|可用|
+
+ [MIT](LICENSE)
