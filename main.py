@@ -27,12 +27,14 @@ class MyPlugin(Star):
             (seg for seg in event.get_messages() if isinstance(seg, Comp.Reply)),
             None,
         )
+        logger.info(reply)
         """优先引用"""
         images = []
         if reply is not None:
             images = [
                 s for s in (reply.at or []) if isinstance(s, Comp.Image)
             ]
+        logger.info("未找到引用消息，继续执行自带消息")
         """其次自带"""
         if not images:
             images = [
@@ -44,7 +46,7 @@ class MyPlugin(Star):
         if not images:
             yield event.plain_result("请发送一张动漫截图，或回复一张图片再发 /查询")
             return
-
+        logger.info("未找到自带消息")
         image_path = await images[0].convert_to_file_path()
 
         def fand(path):
