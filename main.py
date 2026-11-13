@@ -19,7 +19,7 @@ class MyPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
         logger.info("插件加载成功")
-        yield event.plain_result("已加载插件cs")
+        
 
 
     @filter.command("查询")
