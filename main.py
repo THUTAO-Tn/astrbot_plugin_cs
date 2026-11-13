@@ -31,7 +31,7 @@ class MyPlugin(Star):
         images = []
         if reply is not None:
             images = [
-                s for s in (reply.chain or []) if isinstance(s, Comp.Image)
+                s for s in (reply.at or []) if isinstance(s, Comp.Image)
             ]
         """其次自带"""
         if not images:
