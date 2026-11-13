@@ -18,6 +18,8 @@ except ImportError:  # 兼容以文件方式加载的场景
 class MyPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
+        logger.info("插件加载成功")
+        yield event.plain_result("已加载插件cs")
 
 
     @filter.command("查询")
@@ -34,19 +36,16 @@ class MyPlugin(Star):
             images = [
                 s for s in (reply.chain or []) if isinstance(s, Comp.Image)
             ]
-        logger.info("未找到引用消息，继续执行自带消息")
         """其次自带"""
         if not images:
             images = [
-                s
-                for s in event.get_messages()
+                s for s in event.get_messages()
                 if isinstance(s, Comp.Image) and s is not reply
             ]
-
         if not images:
             yield event.plain_result("请发送一张动漫截图，或回复一张图片再发 /查询")
             return
-        logger.info("未找到自带消息")
+
         image_path = await images[0].convert_to_file_path()
 
         def fand(path):
