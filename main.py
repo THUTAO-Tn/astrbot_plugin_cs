@@ -18,7 +18,7 @@ except ImportError:  # 兼容以文件方式加载的场景
 class MyPlugin(Star):
     def __init__(self, context: Context):
         super().__init__(context)
-        
+
     @filter.command("查询")
     async def find(self, event: AstrMessageEvent):
         """下面是调用查询动漫的api"""
